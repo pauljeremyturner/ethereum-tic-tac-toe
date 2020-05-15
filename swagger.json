@@ -1,0 +1,51 @@
+{
+  "swagger": "2.0",
+  "info": {},
+  "paths": {
+    "/games/{id}": {
+      "post": {
+        "description": "If the game id is found, move in existing game, otherwise create new game.  If new game, caller can either specify empty board (computer turn first) or board with a single cross or circle (user turn first).  Caller provides game id - can be a string uuid preferred.",
+        "tags": [
+          "games"
+        ],
+        "summary": "Start Game or Move in existing Game",
+        "operationId": "gameMove",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/gameState"
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "gameState": {
+      "description": "0 | 1 | 2\n\n3 | 4 | 5\n\n6 | 7 | 8",
+      "headers": {
+        "circle": {
+          "type": "string"
+        },
+        "circles": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint8"
+          }
+        },
+        "cross": {
+          "type": "string"
+        },
+        "crosses": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "uint8"
+          }
+        },
+        "gameId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
