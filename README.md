@@ -3,7 +3,39 @@ play the computer at tic tac toe via ethereum blockchain (geth/ golang)
 
 ## NOT MUCH TO SEE HERE, CHECK BACK LATER
 
+## The Tictactoe Board
+
+In order to minimise the amount of storage space used by the Smart Contract, bit shifting is used to represent the 9 squares of the baord
+
+```
+ 64|128|256
+-----------
+  8| 16| 32
+-----------
+  1|  2|  4 
+```
+  
+This way a single integer can be used to represent all squares marked by a player.  Two integers can be used to represent the state of the board.  One for circle and 1 for cross.
+
+e.g. Player has marked the top row of the board
+
+`64 + 128 + 256`
+
+
+
 ## ReST api
+
+### Swagger
+
+The swagger specification for the endpoints is defined in the generated file 'swagger.json'
+
+### Endpoints
+
+There is a single endpoint for starting, playing or joining a game.  When calling this endpoint, if the gameId is not known to the system, it will create a new game.  In this case, the caller can take the first turn (specifying whether circle or cross and which square they want).  If the starter of a game does not specify this, the other player will go first and decide whether to be corcle or cross.
+
+POST
+
+/games
 
 
 ## Building and Deploying the Smart Contract
