@@ -8,7 +8,7 @@ play the computer at tic tac toe via ethereum blockchain (geth/ golang)
 
 ## Building and Deploying the Smart Contract
 
- - Compile Smart Contract
+### Compile Smart Contract
 
 First you need to install a solc compiler.  Check the internet for options on how to do that depending on your operating system.
 
@@ -19,7 +19,7 @@ solc --abi Tictactoe.sol -o build
 
 Check the directory <project root>/contracts/build for a `Tictactoe.abi` file
  
-  - Generate Go binding code
+### Generate Go binding code
   
   There are other ways to do this, but generating the code to interact woth the Smart Contract via the gth api is extremely fiddly.  We can use `abigen` a geth utility to generate this code for us.
   
@@ -31,7 +31,7 @@ Check the directory <project root>/contracts/build for a `Tictactoe.abi` file
   abigen	--abi=./build/Tictactoe.abi	--pkg=store	--out=Tictactoe-geth.go
   ```
   
-   - Compile the abi into EVM bytecode
+### Compile the abi into EVM bytecode
    
    ```
    solc	--bin	./Tictactoe.sol	-o	build
