@@ -4,7 +4,7 @@
 
 # ethereum-tic-tac-toe
 
-This is an ethereum port of the class game tictactoe.  Play the computer at tic tac toe via ethereum blockchain (geth/ golang).
+This is an ethereum port of the classic game tictactoe.  Play the computer at tic tac toe via ethereum blockchain (geth/ golang).
 
 The Smart Contract is written in Solidity.
 
@@ -38,9 +38,23 @@ The swagger specification for the endpoints is defined in the generated file 'sw
 
 There is a single endpoint for starting, playing or joining a game.  When calling this endpoint, if the gameId is not known to the system, it will create a new game.  In this case, the caller can take the first turn (specifying whether circle or cross and which square they want).  If the starter of a game does not specify this, the other player will go first and decide whether to be corcle or cross.
 
-POST
+*POST*
 
-/games
+`/games`
+
+*Headers:*
+```Content-Type=appication/json
+Accept=application/json
+
+```
+* Request Payload Example*
+```
+{
+  "circles" : 0,
+  "crosses" : 16,
+  "circlePlayer" : "Bob"
+}
+```
 
 
 ## Building and Deploying the Smart Contract
