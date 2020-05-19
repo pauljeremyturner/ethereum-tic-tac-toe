@@ -1,7 +1,12 @@
-# ethereum-tic-tac-toe
-play the computer at tic tac toe via ethereum blockchain (geth/ golang)
+
 
 ## NOT MUCH TO SEE HERE, CHECK BACK LATER
+
+# ethereum-tic-tac-toe
+
+This is an ethereum port of the class game tictactoe.  Play the computer at tic tac toe via ethereum blockchain (geth/ golang).
+
+The Smart Contract is written in Solidity.
 
 ## The Tictactoe Board
 
