@@ -1,32 +1,43 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.5.10;
 
 contract Tictactoe {
 
-    address internal ownerPlayerAddress
-    address internal otherPlayerAddress
+  address internal owner;
+  uint256 playPriceWei;
 
-    bool internal playing = true;
+  struct Game {
+    string circlePlayer;
+    address circleAddress;
+    string crossPlayer;
+    address crossAddress;
+    uint256 circles;
+    uint256 crosses;
+    bool circleTurn;
+    bool inProgress;
+  }
 
+  mapping(address => Game) games;
 
-    uint public gameIndex = 0;
-    mapping(uint => Game) private gameMap;
-
-    function Tictactoe() public {
-        ownerPlayerAddress = msg.sender;
+    constructor(uint256 ppw) public {
+        owner = msg.sender;
+        playPriceWei = ppw;
     }
 
-    function startGame() {
-
-    }
-
-    function joinGame() {
-        
-    }
-
-    function move(address player) returns (uint256, uint256) {
-
-        require(msg.sender == ownerPlayerAddress || msg.sender == otherPlayerAddress, "Only 2 players allowed");
-        require(playing, "This game has finished");
+    function startGame(string memory name, bool circle, uint256 firstMove) public payable {
+        require(msg.value == playPriceWei, "Player must transfer exactly the play Price in Wei to start a game");
+        Tictactoe.Game storage game = games[msg.sender];
+        game.inProgress = true;
+        if (circle) {
+            game.circlePlayer = name;
+            game.circles = firstMove;
+            game.circleTurn = false;
+            game.circleAddress = msg.sender;
+        } else {
+            game.crossAddress = msg.sender;
+            game.crossPlayer = name;
+            game.crosses = firstMove;
+            game.circleTurn = true;
+        }
     }
 
 }
