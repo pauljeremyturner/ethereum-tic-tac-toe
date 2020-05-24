@@ -78,7 +78,7 @@ Check the directory <project root>/contracts/build for a `Tictactoe.abi` file
   
   ```
   cd <project root>
-  go run ./cmd/abigen/main.go --abi=./build/Tictactoe.abi	--pkg=store	--out=Tictactoe-geth.go
+  go run ./cmd/abigen/main.go --abi=./build/Tictactoe.abi	--pkg=tictac	--out=Tictactoe-geth.go
   ```
   
 ### Compile the abi into EVM bytecode
